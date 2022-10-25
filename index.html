@@ -8,38 +8,34 @@
     </head>
     <body>
         <div id="vue-app-one"> <!--In app.js-->
-            <h1 class="logo">ChowNow</h1>
-            
-            <span>Hello,</span>
-            <input type="text" v-model="name" />
-            <p>{{ name }}</p>
-
-            <div style="text-align: center;">
-                <!--<button v-on:click="GetUserLocation()">Get Location</button>
-                <p v-show="hasLocation">{{ x }}</p>
-                <p v-show="hasLocation">{{ y }}</p>
-
-                <br>-->
-                
-                <select name="foodType" id="foodType" v-model="foodType">
-                    <option value="burger">Burger</option>
-                    <option value="chicken">Chicken</option>
-                    <option value="salad">Salad</option>
-                    <option value="pizza">Pizza</option>
-                    <option value="pasta">Pasta</option>
-                    <option value="pet">Pet</option>
-                </select>
-
-                <br>
-                <br>
-                <br>
-                <br>
-
-                <button v-on:click="LogUserData()">Chow</button>
+            <div v-if="isActive">
+                <h1 class="logo">ChowNow</h1>
+                <div style="text-align: center;">
+                    <button v-on:click="GetUserLocation()">Get Location</button>
+                    <p v-show="hasLocation">{{ x }}</p>
+                    <p v-show="hasLocation">{{ y }}</p>
+                    <br>
+                    <select name="foodType" id="foodType" v-model="foodType"> <!--Creates dropdown menu-->
+                        <option value="burger">Burger</option>
+                        <option value="chicken">Chicken</option>
+                        <option value="salad">Salad</option>
+                        <option value="pizza">Pizza</option>
+                        <option value="pasta">Pasta</option>
+                        <option value="pet">Pet</option>
+                    </select>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <button v-on:click="ShowChowMenu()">Chow</button>
+                </div>
             </div>
-
         </div>
-        
+        <div id="vue-app-two"> <!--In app.js-->
+            <div v-if="isActive">
+                <h1>Food Menu</h1>
+            </div>
+        </div>
     </body>
 
     <script src="app.js"></script>
