@@ -1,3 +1,14 @@
 .logo {
     text-align: center;
 }
+.filters {
+    height:700px;
+    width: 200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color:grey;
+    text-align: left;
+    text-decoration: underline;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

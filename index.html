@@ -36,9 +36,18 @@
                 </div>
             </div>
         </div>
+
         <div id="vue-app-two"> <!--In app.js-->
             <div v-if="isActive">
-                <h1>Food Menu</h1>
+                <h1 class="logo" style="text-align:left;">ChowNow</h1>
+                <div class="filters">
+                    <input type="checkbox" id="gluten" name="gluten" v-model="isGlutenFree">
+                    <label for="gluten"> Gluten Free {{ isGlutenFree }}</label><br>
+                    <input type="checkbox" id="vegan" name="vegan" v-model="isVegan">
+                    <label for="vegan"> Vegan {{ isVegan }}</label><br>
+                    <input type="checkbox" id="pet" name="pet" v-model="isForPets">
+                    <label for="pet"> Pet Food {{ isForPets }}</label><br>
+                </div>
 
             </div>
         </div>

@@ -43,6 +43,9 @@ var vueAppTwo = new Vue({
     el: '#vue-app-two',
     data: {
         isActive: false,
+        isGlutenFree: false,
+        isVegan: false,
+        isForPets: false,
 
     },
     methods: {
