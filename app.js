@@ -26,7 +26,7 @@ var vueAppOne = new Vue({
             this.GetUserLocation();
             console.log(this.foodType);
         }
-        
+        //eyo
     },
     computed: {
 
