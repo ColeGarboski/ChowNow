@@ -1,3 +1,15 @@
+Vue.component('menuItem', {
+    
+
+    data: function(){
+        return {
+            name:'John',
+
+        }
+    }
+
+});
+
 var vueAppOne = new Vue({
     el: '#vue-app-one',
     data: {

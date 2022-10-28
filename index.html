@@ -26,12 +26,10 @@
                         <option value="pasta">Pasta</option>
                         <option value="pet">Pet</option>
                     </select>
-
                     <br>
                     <br>
                     <br>
                     <br>
-
                     <button v-on:click="ShowChowMenu()">Chow</button>
                 </div>
             </div>
@@ -42,11 +40,30 @@
                 <h1 class="logo" style="text-align:left;">ChowNow</h1>
                 <div class="filters">
                     <input type="checkbox" id="gluten" name="gluten" v-model="isGlutenFree">
-                    <label for="gluten"> Gluten Free {{ isGlutenFree }}</label><br>
+                    <label for="gluten"> Gluten Free {{ isGlutenFree }}</label>
+                    <br>
                     <input type="checkbox" id="vegan" name="vegan" v-model="isVegan">
-                    <label for="vegan"> Vegan {{ isVegan }}</label><br>
+                    <label for="vegan"> Vegan {{ isVegan }}</label>
+                    <br>
                     <input type="checkbox" id="pet" name="pet" v-model="isForPets">
-                    <label for="pet"> Pet Food {{ isForPets }}</label><br>
+                    <label for="pet"> Pet Food {{ isForPets }}</label>
+                    <br>
+                </div>
+                <div class="menu-item">
+                    <img class="food-image" src="img/burger.png" alt="Burger" width="500" height="600" />
+                    <div class="food-attributes">
+                        <h2>big mac</h2> <!-- make dynamic font size-->
+
+                    </div>
+                </div>
+                <div class="menu-item">
+                    
+                </div>
+                <div class="menu-item">
+                    
+                </div>
+                <div class="menu-item">
+                    
                 </div>
 
             </div>

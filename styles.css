@@ -2,13 +2,36 @@
     text-align: center;
 }
 .filters {
-    height:700px;
+    float: left;
+    height: 700px;
     width: 200px;
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color:grey;
+    background-color:rgb(172, 165, 165);
     text-align: left;
     text-decoration: underline;
     font-size: large;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.menu-item {
+    float: left;
+    width: 370px;
+    height: 250px;
+    padding: 10px;
+    border: 5px inset rgb(64, 64, 64); 
+    margin-left: 20px;
+    margin-top: 5px;
+}
+.food-image {
+    float:left;
+    width: 185px;
+    height: 125px;
+}
+.food-attributes {
+    height: 250px;
+    width: 185px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size:1em;
+    float:left;
+    text-align: center;
 }
