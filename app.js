@@ -1,6 +1,19 @@
+Vue.component('menuItem', {
+    
+
+    data: function(){
+        return {
+            name:'John',
+
+        }
+    }
+
+});
+
 var vueAppOne = new Vue({
     el: '#vue-app-one',
     data: {
+        isActive: true,
         name:'',
         foodType:'',
         hasLocation: false,
@@ -25,7 +38,30 @@ var vueAppOne = new Vue({
         LogUserData: function() {
             this.GetUserLocation();
             console.log(this.foodType);
+        },
+        ShowChowMenu: function() {
+            this.LogUserData();
+            this.isActive = false;
+            vueAppTwo.isActive = true;
         }
+        
+    },
+    computed: {
+
+    },
+});
+
+var vueAppTwo = new Vue({
+    el: '#vue-app-two',
+    data: {
+        isActive: false,
+        isGlutenFree: false,
+        isVegan: false,
+        isForPets: false,
+
+    },
+    methods: {
+        
         
     },
     computed: {
