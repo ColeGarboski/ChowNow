@@ -14,24 +14,31 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .menu-item {
+    position: relative;
     float: left;
     width: 370px;
     height: 250px;
     padding: 10px;
-    border: 5px inset rgb(64, 64, 64); 
+    border: 2px inset rgb(64, 64, 64); 
     margin-left: 20px;
     margin-top: 5px;
 }
 .food-image {
-    float:left;
+    position: absolute;
+
     width: 185px;
     height: 125px;
 }
 .food-attributes {
-    height: 250px;
+    position: absolute;
+    right: 10px;
+    height: 220px;
     width: 185px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size:1em;
-    float:left;
-    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.food-description {
+    position: absolute;
+    bottom: 10px;
+    width: 185px;
+    height: 125px;
 }
