@@ -99,7 +99,7 @@ var vueAppTwo = new Vue({
             this.menuItem.locations[this.menuItem.numLocations] = new Location(city, distanceFromUser);
             this.menuItem.numLocations++;
         }
-        
+        //eyo
     },
     computed: {
 
