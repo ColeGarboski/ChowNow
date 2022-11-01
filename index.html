@@ -58,8 +58,10 @@
                             <li>{{ menuItem.foodType }}</li>
                             <li>{{ menuItem.calories }} cal</li>
                         </ul>
-                        <ul v-for="address in menuItem.locations">
-                            <li>{{ menuItem.location.city }} ({{ menuItem.location.distanceFromUser }} mi)</li>
+                        <ul>
+                            <li v-for="(location, index) in menuItem.locations">
+                                {{ location.city }} ({{ location.distanceFromUser }} mi)
+                            </li>
                         </ul>
        
                     </div>
@@ -67,6 +69,13 @@
                         <h1>{{ menuItem.description }}</h1> <!-- make dynamic font size-->
                     </div>
                 </div> <!--put into vue component-->
+                <div>
+                    <input type="text" name="cityinput" v-model="city">
+                    <label for="cityinput">city</label>
+                    <input type="text" name="distanceinput" v-model="distance">
+                    <label for="distanceinput">distance</label>
+                    <button v-on:click="AddLocation(city, distance)">Add Location</button>
+                </div>
                 <div v-for="menuItem in menuItems"> <!--for each item in the menuItems data in app.js-->
                     <vue-menu-item></vue-menu-item> <!--component in app.js-->
                 </div>

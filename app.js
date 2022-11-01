@@ -60,6 +60,8 @@ var vueAppTwo = new Vue({
         isGlutenFree: false,
         isVegan: false,
         isForPets: false,
+        city:'default',
+        distance:-1,
         menuItem: {
             name:'Big Mac',
             restaurant:'McDonalds',
@@ -69,10 +71,10 @@ var vueAppTwo = new Vue({
                 city:'Manchester',
                 distanceFromUser:2, //Calculate me
             },
+            numLocations:0,
             locations: [ //Play with having multiple location objects within here
-                '1',
-                '2',
-                
+
+
             ],
             description: 'mcdonalds new burger',
 
@@ -89,7 +91,14 @@ var vueAppTwo = new Vue({
 
     },
     methods: {
-        
+        Location: function(city, distanceFromUser) {
+            this.city = city;
+            this.distanceFromUser = distanceFromUser; //Calculate Me
+        },
+        AddLocation: function(city, distanceFromUser) { //Creates new location in array
+            this.menuItem.locations[this.menuItem.numLocations] = new Location(city, distanceFromUser);
+            this.menuItem.numLocations++;
+        }
         
     },
     computed: {
