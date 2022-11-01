@@ -10,12 +10,15 @@
         <div id="vue-app-one"> <!--In app.js-->
             <div v-if="isActive">
                 <h1 class="logo">ChowNow</h1>
+
                 <div style="text-align: center;">
                     <button v-on:click="GetUserLocation()">Get Location</button>
                     <p v-show="hasLocation">{{ x }}</p>
                     <p v-show="hasLocation">{{ y }}</p>
+
                     <br>
-                    <select name="foodType" id="foodType" v-model="foodType"> <!--Creates dropdown menu-->
+                    
+                    <select name="foodType" id="foodType" v-model="foodType">
                         <option value="burger">Burger</option>
                         <option value="chicken">Chicken</option>
                         <option value="salad">Salad</option>
@@ -31,9 +34,52 @@
                 </div>
             </div>
         </div>
+
         <div id="vue-app-two"> <!--In app.js-->
             <div v-if="isActive">
-                <h1>Food Menu</h1>
+                <h1 class="logo" style="text-align:left;">ChowNow</h1>
+                <div class="filters">
+                    <input type="checkbox" id="gluten" name="gluten" v-model="isGlutenFree">
+                    <label for="gluten"> Gluten Free {{ isGlutenFree }}</label>
+                    <br>
+                    <input type="checkbox" id="vegan" name="vegan" v-model="isVegan">
+                    <label for="vegan"> Vegan {{ isVegan }}</label>
+                    <br>
+                    <input type="checkbox" id="pet" name="pet" v-model="isForPets">
+                    <label for="pet"> Pet Food {{ isForPets }}</label>
+                    <br>
+                </div>
+                <div class="menu-item"> <!--put into vue component-->
+                    <img class="food-image" src="img/burger.png" alt="Burger" width="500" height="600" />
+                    <div class="food-attributes">
+                        <h2 style="text-align:center;">{{ menuItem.name }}</h2> <!-- make dynamic font size-->
+                        <ul>
+                            <li>{{ menuItem.restaurant }}</li>
+                            <li>{{ menuItem.foodType }}</li>
+                            <li>{{ menuItem.calories }} cal</li>
+                        </ul>
+                        <ul>
+                            <li v-for="(location, index) in menuItem.locations">
+                                {{ location.city }} ({{ location.distanceFromUser }} mi)
+                            </li>
+                        </ul>
+       
+                    </div>
+                    <div class="food-description">
+                        <h1>{{ menuItem.description }}</h1> <!-- make dynamic font size-->
+                    </div>
+                </div> <!--put into vue component-->
+                <div>
+                    <input type="text" name="cityinput" v-model="city">
+                    <label for="cityinput">city</label>
+                    <input type="text" name="distanceinput" v-model="distance">
+                    <label for="distanceinput">distance</label>
+                    <button v-on:click="AddLocation(city, distance)">Add Location</button>
+                </div>
+                <div v-for="menuItem in menuItems"> <!--for each item in the menuItems data in app.js-->
+                    <vue-menu-item></vue-menu-item> <!--component in app.js-->
+                </div>
+                
             </div>
         </div>
     </body>

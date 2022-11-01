@@ -1,3 +1,44 @@
 .logo {
     text-align: center;
 }
+.filters {
+    float: left;
+    height: 700px;
+    width: 200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color:rgb(172, 165, 165);
+    text-align: left;
+    text-decoration: underline;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.menu-item {
+    position: relative;
+    float: left;
+    width: 370px;
+    height: 250px;
+    padding: 10px;
+    border: 2px inset rgb(64, 64, 64); 
+    margin-left: 20px;
+    margin-top: 5px;
+}
+.food-image {
+    position: absolute;
+
+    width: 185px;
+    height: 125px;
+}
+.food-attributes {
+    position: absolute;
+    right: 10px;
+    height: 220px;
+    width: 185px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.food-description {
+    position: absolute;
+    bottom: 10px;
+    width: 185px;
+    height: 125px;
+}
