@@ -1,5 +1,7 @@
-Vue.component('menuItem', {
-    
+Vue.component('vue-menu-item', {
+    template: `
+        
+    `,
 
     data: function(){
         return {
@@ -58,10 +60,45 @@ var vueAppTwo = new Vue({
         isGlutenFree: false,
         isVegan: false,
         isForPets: false,
+        city:'default',
+        distance:-1,
+        menuItem: {
+            name:'Big Mac',
+            restaurant:'McDonalds',
+            foodType:'Burger',
+            calories:600,
+            location: {
+                city:'Manchester',
+                distanceFromUser:2, //Calculate me
+            },
+            numLocations:0,
+            locations: [ //Play with having multiple location objects within here
+
+
+            ],
+            description: 'mcdonalds new burger',
+
+        },
+        menuItems: [ //Will render a menu item component for each object within this dataset
+            '1', 
+            '2', 
+            '3',
+            '4',
+            '5',
+            '6',
+
+        ],
 
     },
     methods: {
-        
+        Location: function(city, distanceFromUser) {
+            this.city = city;
+            this.distanceFromUser = distanceFromUser; //Calculate Me
+        },
+        AddLocation: function(city, distanceFromUser) { //Creates new location in array
+            this.menuItem.locations[this.menuItem.numLocations] = new Location(city, distanceFromUser);
+            this.menuItem.numLocations++;
+        }
         
     },
     computed: {
