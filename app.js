@@ -71,8 +71,17 @@ var vueAppTwo = new Vue({
                 city:'Manchester',
                 distanceFromUser:2, //Calculate me
             },
-            numLocations:0,
+            numLocations:1,
             locations: [ //Play with having multiple location objects within here
+                {
+                    city: 'Manchester',
+                    distanceFromUser: 2
+                },
+                {
+                    city: 'Concord',
+                    distanceFromUser: 6
+                }
+
 
 
             ],
@@ -96,7 +105,7 @@ var vueAppTwo = new Vue({
             this.distanceFromUser = distanceFromUser; //Calculate Me
         },
         AddLocation: function(city, distanceFromUser) { //Creates new location in array
-            this.menuItem.locations[this.menuItem.numLocations] = new Location(city, distanceFromUser);
+            this.locations[this.menuItem.numLocations] = new Location(city, distanceFromUser);
             this.menuItem.numLocations++;
         }
         //eyo
