@@ -2,14 +2,14 @@ drop database if exists chownow;
 
  create database chownow;
 use chownow;
- create table RESTAURANT (R_ID int(255), R_Name varchar(50));
+ create table RESTAURANT (R_ID int(255), R_Name varchar(50), PRIMARY KEY (R_ID) );
 
-create table R_LOCATION (RL_ID int(255), R_ID int(255), R_lat decimal(10,7), R_long decimal(10,7), R_state varchar(50), R_street varchar(100), R_city varchar(100), R_zip int(255)  );  
+create table R_LOCATION (RL_ID int(255), R_ID int(255), R_lat decimal(10,7), R_long decimal(10,7), R_state varchar(50), R_street varchar(100), R_city varchar(100), R_zip int(255), PRIMARY KEY (RL_ID) );  
 
-create table FOODITEM (F_ID int(255), F_Calorie int(255), F_Type varchar(50), F_Name varchar(50), F_Price decimal(65,2), F_Desc varchar(300));
+create table FOODITEM (F_ID int(255), F_Calorie int(255), F_Type varchar(50), F_Name varchar(50), F_Price decimal(65,2), F_Desc varchar(300), PRIMARY KEY (F_ID));
 
 
-create table MENU ( F_ID int(255), RL_ID int(255) );
+create table MENU ( F_ID int(255), RL_ID int(255), PRIMARY KEY (F_ID,RL_ID) );
 
 
 
@@ -36,7 +36,7 @@ insert into FOODITEM (F_ID, F_Calorie, F_Type, F_Name, F_Price, F_Desc ) values
 
 (1, 1000, 'burger', 'Whopper', 10.50, 'its a Whopper' ),
 (2, 600, 'soda', 'coca cola', 5.33, 'its coca cola ' ),
-(2, 500, 'McChicken', 'sandwich', 5.33, 'its a McChicken' );
+(3, 500, 'sandwich', 'McChicken', 4.99, 'its a McChicken' );
 
 
 insert into menu (F_ID, RL_ID) Values
@@ -45,12 +45,25 @@ insert into menu (F_ID, RL_ID) Values
 
 
 
+show tables; 
+select * from fooditem;
+select * from restaurant;
+select * from R_Location;
+select * from menu;
+
+Select * from 
+Restaurant inner join r_location on restaurant.R_ID = R_location.R_ID 
+inner join 
+menu on r_location.rl_id = menu.rl_id
+inner join
+fooditem on menu.f_id = fooditem.f_id;
 
 
 
-
-
-
-
-
-
+Select F_name from 
+Restaurant inner join r_location on restaurant.R_ID = R_location.R_ID 
+inner join 
+menu on r_location.rl_id = menu.rl_id
+inner join
+fooditem on menu.f_id = fooditem.f_id
+where R_name = 'mcdonalds';
