@@ -4,7 +4,7 @@
     <input type="text" placeholder="Password" name="password" v-model="password">
     <button>Log-In</button>
     <br>
-    <button>Forgot Password?</button>
+    <router-link to="/forgot" tag="button">Forgot Password?</router-link>
     <button>Create Account</button>
   </div>
 </template>
