@@ -117,5 +117,6 @@ var vueAppTwo = new Vue({
     computed: {
 
     },
+                        
 });
 

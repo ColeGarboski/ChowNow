@@ -1,44 +1,257 @@
-.logo {
-    text-align: center;
-}
-.filters {
-    float: left;
-    height: 700px;
-    width: 200px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color:rgb(172, 165, 165);
-    text-align: left;
-    text-decoration: underline;
-    font-size: large;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.menu-item {
+.custom-select {
     position: relative;
-    float: left;
-    width: 370px;
-    height: 250px;
-    padding: 10px;
-    border: 2px inset rgb(64, 64, 64); 
-    margin-left: 20px;
-    margin-top: 5px;
-}
-.food-image {
+  }
+  
+  .chow_button {
+    
+                      
+                      display: inline-block;
+                      outline: 0;
+                      border: none;
+                      cursor: pointer;
+                      font-weight: 600;
+                      border-radius: 4px;
+                      font-size: 13px;
+                      height: 30px;
+                      background-color: #9147ff;
+                      color: white;
+                      padding: 0 10px;
+                      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  
+  .login_button {
+    
+                      display: inline-block;
+                      outline: 0;
+                      border: none;
+                      cursor: pointer;
+                      font-weight: 600;
+                      border-radius: 4px;
+                      font-size: 13px;
+                      height: 30px;
+                      background-color: #9147ff;
+                      color: white;
+                      padding: 0 10px;
+                      padding-left: 10px;
+                      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  
+  .create_account_button {
+    
+                      display: inline-block;
+                      outline: 0;
+                      border: none;
+                      cursor: pointer;
+                      font-weight: 600;
+                      border-radius: 4px;
+                      font-size: 13px;
+                      height: 30px;
+                      background-color: #9147ff;
+                      color: white;
+                      padding: 0 10px;
+                      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  
+  .input_fields {
+    
+  }
+  
+  .logo {
+      text-align: left;
+      padding-left: 5%;
+  }
+  .filters {
+      float: left;
+      height: 700px;
+      width: 200px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background-color:rgb(172, 165, 165);
+      text-align: left;
+      text-decoration: underline;
+      font-size: large;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .menu-item {
+      position: relative;
+      float: left;
+      width: 370px;
+      height: 250px;
+      padding: 10px;
+      border: 2px inset rgb(64, 64, 64); 
+      margin-left: 20px;
+      margin-top: 5px;
+  }
+  .food-image {
+      position: absolute;
+  
+      width: 185px;
+      height: 125px;
+  }
+  .food-attributes {
+      position: absolute;
+      right: 10px;
+      height: 220px;
+      width: 185px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .food-description {
+      position: absolute;
+      bottom: 10px;
+      width: 185px;
+      height: 125px;
+  }
+  
+  body
+  {
+    margin: 0;
+    padding: 0;
+    
+    /* make it look decent enough */
+    background: #232323;
+    color: #cdcdcd;
+    font-family: "Avenir Next", "Avenir", sans-serif;
+  }
+  
+  #menuToggle
+  {
+    display: block;
+    position: relative;
+    top: 50px;
+    left: 50px;
+    
+    z-index: 1;
+    
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  #menuToggle a
+  {
+    text-decoration: none;
+    color: #232323;
+    
+    transition: color 0.3s ease;
+  }
+  
+  #menuToggle a:hover
+  {
+    color: tomato;
+  }
+  
+  
+  #menuToggle input
+  {
+    display: block;
+    width: 40px;
+    height: 32px;
     position: absolute;
-
-    width: 185px;
-    height: 125px;
-}
-.food-attributes {
+    top: -7px;
+    left: -5px;
+    
+    cursor: pointer;
+    
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */
+    
+    -webkit-touch-callout: none;
+  }
+  
+  /*
+   * Just a quick hamburger
+   */
+  #menuToggle span
+  {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    
+    background: #cdcdcd;
+    border-radius: 3px;
+    
+    z-index: 1;
+    
+    transform-origin: 4px 0px;
+    
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+  }
+  
+  #menuToggle span:first-child
+  {
+    transform-origin: 0% 0%;
+  }
+  
+  #menuToggle span:nth-last-child(2)
+  {
+    transform-origin: 0% 100%;
+  }
+  
+  /* 
+   * Transform all the slices of hamburger
+   * into a crossmark.
+   */
+  #menuToggle input:checked ~ span
+  {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #232323;
+  }
+  
+  /*
+   * But let's hide the middle one.
+   */
+  #menuToggle input:checked ~ span:nth-last-child(3)
+  {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  
+  /*
+   * Ohyeah and the last one should go the other direction
+   */
+  #menuToggle input:checked ~ span:nth-last-child(2)
+  {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+  
+  /*
+   * Make this absolute positioned
+   * at the top left of the screen
+   */
+  #menu
+  {
     position: absolute;
-    right: 10px;
-    height: 220px;
-    width: 185px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.food-description {
-    position: absolute;
-    bottom: 10px;
-    width: 185px;
-    height: 125px;
-}
+    width: 300px;
+    margin: -100px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+    
+    background: #ededed;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+    
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  }
+  
+  #menu li
+  {
+    padding: 10px 0;
+    font-size: 22px;
+  }
+  
+  /*
+   * And let's slide it in from the left
+   */
+  #menuToggle input:checked ~ ul
+  {
+    transform: none;
+  }
+  

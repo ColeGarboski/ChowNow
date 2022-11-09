@@ -5,11 +5,31 @@
         <title>ChowNow</title>
         <link href="styles.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+      <nav role="navigation">
+  <div id="menuToggle">
+    <input type="checkbox" />
+    
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <ul id="menu">
+      <a href="#"><li>Home</li></a>
+      <a href="#"><li>Login</li></a>
+      <a href="#"><li>Create Account</li></a>
+      <a href="#"><li>Contact</li></a>
+    </ul>
+  </div>
+</nav>
     </head>
     <body>
         <div id="vue-app-one"> <!--In app.js-->
             <div v-if="isActive">
-                <h1 class="logo">ChowNow</h1>
+                <h1 class="logo">ChowNow‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎  ‎ ‎  ‎  
+                <button class="login_button">Login</button>
+                <button class="create_account_button">Create Account</button>
+                  </h1>
+                  
 
                 <div style="text-align: center;">
                     <!--<button v-on:click="GetUserLocation()">Get Location</button>
@@ -18,23 +38,18 @@
 
                     <br>
                     -->
-                    <select name="foodType" id="foodType" v-model="foodType">
-                        <option value="burger">Burger</option>
-                        <option value="chicken">Chicken</option>
-                        <option value="salad">Salad</option>
-                        <option value="pizza">Pizza</option>
-                        <option value="pasta">Pasta</option>
-                        <option value="pet">Pet</option>
+                  
+                    
+                    <select class="custom-select" style="width:100px;" >
+                    <option value="0">Select food:</option>
+                    <option value="1">Burger</option>
+                    <option value="2">Pizza</option>
+                    <option value="3">Burrito</option>
                     </select>
                     <br>
                     <br>
                     <br>
-                    <br>
-                    <button v-on:click="ShowChowMenu()">Chow</button>
-                </div>
-                <div>
-                    <button>Log-In</button>
-                    <button>Create Account</button>
+                    <button class="chow_button" v-on:click="ShowChowMenu()">Chow</button>
                 </div>
                 <br>
                 <br>
@@ -53,7 +68,7 @@
                 <br>
                 <br>
                 <br>
-                <div> <!--create account screen-->
+                <div class="input_fields"> <!--create account screen-->
                     <input type="text" placeholder="First Name" name="firstName" v-model="userFirstName">
                     <input type="text" placeholder="Last Name" name="lastName" v-model="userLastName">
                     <br>
