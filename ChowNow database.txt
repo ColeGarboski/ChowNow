@@ -14,11 +14,6 @@ create table MENU ( F_ID int(255), RL_ID int(255), PRIMARY KEY (F_ID,RL_ID) );
 
 
 
- 
-
-
-
-
 
 insert into restaurant (R_ID , R_Name ) values (1, 'mcdonalds'), (2,'burgerKing');
 
