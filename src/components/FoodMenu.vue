@@ -2,15 +2,28 @@
   <div id="food-menu"> <!--In app.js-->
     <h1 class="logo" style="text-align:left;">ChowNow</h1>
       <div class="filters">
+        <input type="checkbox" id="burger" name="burger" v-model="typeBurger">
+        <label for="burger"> Hamburger (numNearby) {{ typeBurger }}</label>
+        <br>
+        <input type="checkbox" id="chicken" name="chicken" v-model="typeChicken">
+        <label for="chicken"> Chicken (numNearby) {{ typeChicken }}</label>
+        <br>
+        <input type="checkbox" id="salad" name="salad" v-model="typeSalad">
+        <label for="salad"> Salad (numNearby) {{ typeSalad }}</label>
+        <br>
+        <input type="checkbox" id="pizza" name="pizza" v-model="typePizza">
+        <label for="pizza"> Pizza (numNearby) {{ typePizza }}</label>
+        <br>
+        <input type="checkbox" id="pasta" name="pasta" v-model="typePasta">
+        <label for="pasta"> Pasta (numNearby) {{ typePasta }}</label>
+        <br>
         <input type="checkbox" id="gluten" name="gluten" v-model="isGlutenFree">
         <label for="gluten"> Gluten Free {{ isGlutenFree }}</label>
         <br>
         <input type="checkbox" id="vegan" name="vegan" v-model="isVegan">
         <label for="vegan"> Vegan {{ isVegan }}</label>
         <br>
-        <input type="checkbox" id="pet" name="pet" v-model="isForPets">
-        <label for="pet"> Pet Food {{ isForPets }}</label>
-        <br>
+        
       </div>
       <div>
         <FoodMenuItem></FoodMenuItem>
@@ -28,9 +41,16 @@ export default {
   name: 'food-menu',
   data: function(){
     return {
+        typeBurger: false,
+        typeChicken: false,
+        typeSalad: false,
+        typePizza: false,
+        typePasta: false,
         isGlutenFree: false,
         isVegan: false,
         isForPets: false,
+
+
         city:'default',
         distance:-1,
         
