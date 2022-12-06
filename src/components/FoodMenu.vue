@@ -26,7 +26,7 @@
         
       </div>
       <div>
-        <FoodMenuItem></FoodMenuItem>
+        <FoodMenuItem></FoodMenuItem> <!--https://www.smashingmagazine.com/2020/01/data-components-vue-js/   Use props to create components-->
         <FoodMenuItem></FoodMenuItem>
         <FoodMenuItem></FoodMenuItem>
       </div>

@@ -11,7 +11,6 @@
               <option value="salad">Salad</option>
               <option value="pizza">Pizza</option>
               <option value="pasta">Pasta</option>
-              <option value="pet">Pet</option>
           </select>
           <br>
           <br>
