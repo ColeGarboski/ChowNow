@@ -1,24 +1,24 @@
 <template>
-    <div class="menu-item"> <!--put into vue component-->
+    <div class="menu-item">
         <img class="food-image" src="src/assets/burger.png" alt="Burger" width="500" height="600" />
         <div class="food-attributes">
-          <h2 style="text-align:center;">{{ menuItem.name }}</h2> <!-- make dynamic font size-->
+          <h2 style="text-align:center;">{{ foodName }}</h2> <!-- make dynamic font size-->
           <ul>
-            <li>{{ menuItem.restaurant }}</li>
-            <li>{{ menuItem.foodType }}</li>
-            <li>{{ menuItem.calories }} cal</li>
+            <li>{{ restaurant }}</li>
+            <li>{{ foodType }}</li>
+            <li>{{ calories }} cal</li>
           </ul>
           <ul>
             <li v-for="location in menuItem.locations" :key="location">
-              {{ location.city }} ({{ location.distanceFromUser }} mi)
+              {{ locations }} ({{ locations }} mi)
             </li>
           </ul>
     
-        </div>
+        </div> <!--FIXME add price label somewhere-->
         <div class="food-description">
-          <h1>{{ menuItem.description }}</h1> <!-- make dynamic font size-->
+          <h1>{{ description }}</h1> <!-- make dynamic font size-->
         </div>
-      </div> <!--put into vue component-->
+      </div>
   </template>
   
   <script>
@@ -48,6 +48,9 @@
   
               ],
               description: 'mcdonalds new burger',
+              glutenFree: true,
+              vegan: false,
+              price: 4.99,
   
           },
   
@@ -73,6 +76,16 @@
   
       },
     props: {
+      foodName: String,
+      restaurant: String,
+      foodType: String,
+      calories: Number,
+      locations: String, //FIXME support multiple
+      description: String,
+      price: String,
+      glutenFree: Number,
+      vegan: Number,
+
     }
   }
   </script>

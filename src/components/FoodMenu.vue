@@ -25,10 +25,19 @@
         <br>
         
       </div>
-      <div>
-        <FoodMenuItem></FoodMenuItem> <!--https://www.smashingmagazine.com/2020/01/data-components-vue-js/   Use props to create components-->
-        <FoodMenuItem></FoodMenuItem>
-        <FoodMenuItem></FoodMenuItem>
+      <div v-for="(foodItem, index) in this.menuItems" :key="index">
+        <FoodMenuItem 
+        :foodName="foodItem.F_Name"
+        :restaurant="foodItem.R_Name"
+        :foodType="foodItem.F_Type"
+        :calories="foodItem.F_Calorie"
+        :locations="foodItem.R_Name"
+        :description="foodItem.F_Desc"
+        :price="foodItem.F_Price"
+        :glutenFree="foodItem.Gluten_Free"
+        :vegan="foodItem.Vegan"
+        > </FoodMenuItem>
+
       </div>
   </div>
 </template>
@@ -54,12 +63,16 @@ export default {
         city:'default',
         distance:-1,
         
+        menuItems: null,
+
     }
       
     },
     created() {
     axios.get("http://localhost:3000/ChowNowDatabase").then((result) => {
-      console.log(result.data);
+      console.log(result.data.data);
+      this.menuItems = result.data.data;
+      console.log(this.menuItems);
     })
     },
     methods: {
