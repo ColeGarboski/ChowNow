@@ -18,11 +18,11 @@
         <h1>Hungry?<br>Find your way to food fast!</h1>
         <p>Click your desired food below:<br>We will find you all available options along with the distance to each!</p>
         <div>
-          <button type="button"><span></span>Burger</button>
-          <button type="button"><span></span>Pasta</button>
-          <button type="button"><span></span>Fried Chicken</button>
-          <button type="button"><span></span>Tacos</button>
-          <button type="button"><span></span>Sub</button>
+          <router-link to="/chow" tag="button">Burger</router-link>
+          <router-link to="/chow" tag="button">Pasta</router-link>
+          <router-link to="/chow" tag="button">Fried Chicken</router-link>
+          <router-link to="/chow" tag="button">Tacos</router-link>
+          <router-link to="/chow" tag="button">Sub</router-link>
         </div>
       </div>
 
