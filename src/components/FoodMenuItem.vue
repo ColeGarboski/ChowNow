@@ -27,34 +27,7 @@
     name: 'food-menu-item',
     data: function(){
       return {
-          city:'default',
-          distance:-1,
-          menuItem: {
-              name:'Big Mac',
-              restaurant:'McDonalds',
-              foodType:'Burger',
-              calories:600,
-              numLocations:2,
-              locations: [ //Play with having multiple location objects within here
-                  {
-                      city: 'Manchester',
-                      distanceFromUser: 2
-                  },
-                  {
-                      city: 'Concord',
-                      distanceFromUser: 6
-                  }
-  
-  
-  
-              ],
-              description: 'mcdonalds new burger',
-              glutenFree: true,
-              vegan: false,
-              price: 4.99,
-  
-          },
-  
+          
       }
         
       },
