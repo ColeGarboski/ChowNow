@@ -49,10 +49,7 @@ export default {
         isVegan: false,
         isForPets: false,
 
-
-        city:'default',
-        distance:-1,
-        
+        createdFoods: [],
         tempMenuItems: [],
         menuItems: [
         {
@@ -64,6 +61,15 @@ export default {
           price: -1.0,
           glutenFree: -1,
           vegan: -1,
+          numLocations: 0,
+          locations: [
+            {
+              lat: -1,
+              lng: -1,
+              city: "null",
+              distanceFromUser: -1
+            },
+          ],
 
         },
 
@@ -77,21 +83,51 @@ export default {
       console.log(result.data.data);
       this.tempMenuItems = result.data.data;
       console.log(this.tempMenuItems);
-      console.log(this.tempMenuItems[0].F_Name);
+      let j = 0;
       for (let i = 0; i < this.tempMenuItems.length; i++) {
-        const name = this.tempMenuItems[0].F_Name;
-        const restaurant = this.tempMenuItems[0].R_Name;
-        const type = this.tempMenuItems[0].F_Type;
-        const calories = this.tempMenuItems[0].F_Calorie;
-        const description = this.tempMenuItems[0].F_Desc;
-        const price = this.tempMenuItems[0].F_Price;
-        const glutenFree = this.tempMenuItems[0].Gluten_Free;
-        const vegan = this.tempMenuItems[0].vegan;
-        
-        AddFoodItem(i, name, restaurant, type, calories, description, price, glutenFree, vegan);
+        if (!(this.createdFoods.includes(this.tempMenuItems[i].F_Name))) { //If food item has not been created, create it
+          const name = this.tempMenuItems[i].F_Name;
+          const restaurant = this.tempMenuItems[i].R_Name;
+          const type = this.tempMenuItems[i].F_Type;
+          const calories = this.tempMenuItems[i].F_Calorie;
+          const description = this.tempMenuItems[i].F_Desc;
+          const price = this.tempMenuItems[i].F_Price;
+          const glutenFree = this.tempMenuItems[i].Gluten_Free;
+          const vegan = this.tempMenuItems[i].Vegan;
+          
+          this.AddFoodItem(j, name, restaurant, type, calories, description, price, glutenFree, vegan);
+          console.log(this.menuItems[j]);
 
-        console.log(this.menuItems[0]);
+          j++;
+
+        }
+        
       }
+
+      console.log(this.menuItems);
+      console.log(this.createdFoods);
+
+      for (let i = 0; i < this.tempMenuItems.length; i++) {
+        if (this.createdFoods.includes(this.tempMenuItems[i].F_Name)) { //If food item has been created, add location to it
+          for (let k = 0; k < this.menuItems.length; k++) {
+            if (this.menuItems[k].name == this.tempMenuItems[i].F_Name) {
+              this.menuItems[k].numLocations++;
+              const location = {
+                  lat: this.tempMenuItems[i].R_lat,
+                  lng: this.tempMenuItems[i].R_long,
+                  city: this.tempMenuItems[i].R_city,
+                  distanceFromUser: -1,
+              };
+              this.menuItems[k].locations.push(location);
+              console.log("Location added to " + this.menuItems[k]);
+              console.log(this.menuItems[k]);
+            }
+          }
+        }
+      }
+
+      console.log(this.menuItems);
+
     })
     },
     methods: {
@@ -104,13 +140,38 @@ export default {
             this.price = price;
             this.glutenFree = glutenFree;
             this.vegan = vegan;
+            this.numLocations = 0;
+            this.locations = [
+              {
+                lat: -1,
+                lng: -1,
+                city: "null",
+                distanceFromUser: -1
+              },
+            ];
 
         },
         AddFoodItem: function(index, name, restaurant, type, calories, description, price, glutenFree, vegan) { //Creates new location in array
           this.menuItems[index] = new this.FoodItem(name, restaurant, type, calories, description, price, glutenFree, vegan);
-          console.log("Food Added");
-        }
+          this.createdFoods.push(name);
+          this.menuItems[index].locations.length = 0;
+          console.log("Food Added at index " + index);
+        },
         //eyo
+        Location: function(city, distanceFromUser, lat, long) {
+              this.lat = lat;
+              this.long = long;
+              this.city = city;
+              this.distanceFromUser = distanceFromUser; //Calculate Me
+              console.log(city);
+              console.log(distanceFromUser);
+          },
+          AddLocation: function(city, distanceFromUser, lat, long) { //Creates new location in array
+              if (this.menuItem.numLocations < 3) {
+                  this.menuItem.locations[this.menuItem.numLocations] = new this.Location(city, distanceFromUser, lat, long);
+                  this.menuItem.numLocations++;
+              }
+          }
     },
     computed: {
 
