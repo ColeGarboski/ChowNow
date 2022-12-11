@@ -3,19 +3,19 @@
     <h1 class="logo" style="text-align:left;">ChowNow</h1>
       <div class="filters">
         <input type="checkbox" id="burger" name="burger" v-model="typeBurger">
-        <label for="burger"> Hamburger (numNearby) {{ typeBurger }}</label>
-        <br>
-        <input type="checkbox" id="chicken" name="chicken" v-model="typeChicken">
-        <label for="chicken"> Chicken (numNearby) {{ typeChicken }}</label>
-        <br>
-        <input type="checkbox" id="salad" name="salad" v-model="typeSalad">
-        <label for="salad"> Salad (numNearby) {{ typeSalad }}</label>
-        <br>
-        <input type="checkbox" id="pizza" name="pizza" v-model="typePizza">
-        <label for="pizza"> Pizza (numNearby) {{ typePizza }}</label>
+        <label for="burger"> Burger (numNearby) {{ typeBurger }}</label>
         <br>
         <input type="checkbox" id="pasta" name="pasta" v-model="typePasta">
         <label for="pasta"> Pasta (numNearby) {{ typePasta }}</label>
+        <br>
+        <input type="checkbox" id="chicken" name="chicken" v-model="typeChicken">
+        <label for="chicken"> Fried Chicken (numNearby) {{ typeChicken }}</label>
+        <br>
+        <input type="checkbox" id="tacos" name="tacos" v-model="typeTacos">
+        <label for="tacos"> Tacos (numNearby) {{ typeTacos }}</label>
+        <br>
+        <input type="checkbox" id="sub" name="sub" v-model="typeSub">
+        <label for="sub"> Sub (numNearby) {{ typeSub }}</label>
         <br>
         <input type="checkbox" id="gluten" name="gluten" v-model="isGlutenFree">
         <label for="gluten"> Gluten Free {{ isGlutenFree }}</label>
@@ -42,12 +42,11 @@ export default {
     return {
         typeBurger: false,
         typeChicken: false,
-        typeSalad: false,
-        typePizza: false,
+        typeTacos: false,
+        typeSub: false,
         typePasta: false,
         isGlutenFree: false,
         isVegan: false,
-        isForPets: false,
 
         createdFoods: [],
         tempMenuItems: [],
