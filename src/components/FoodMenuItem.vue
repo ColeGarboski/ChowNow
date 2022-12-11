@@ -7,6 +7,7 @@
             <li>{{ restaurant }}</li>
             <li>{{ foodType }}</li>
             <li>{{ calories }} cal</li>
+            <li>${{ price }}</li>
           </ul>
           <ul>
             <li v-for="location in menuItem.locations" :key="location">
@@ -14,7 +15,7 @@
             </li>
           </ul>
     
-        </div> <!--FIXME add price label somewhere-->
+        </div>
         <div class="food-description">
           <h1>{{ description }}</h1> <!-- make dynamic font size-->
         </div>
@@ -76,15 +77,7 @@
   
       },
     props: {
-      foodName: String,
-      restaurant: String,
-      foodType: String,
-      calories: Number,
-      locations: String, //FIXME support multiple
-      description: String,
-      price: String,
-      glutenFree: Number,
-      vegan: Number,
+      foodItem: Object,
 
     }
   }

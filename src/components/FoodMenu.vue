@@ -26,17 +26,7 @@
         
       </div>
       <div v-for="(foodItem, index) in this.menuItems" :key="index">
-        <FoodMenuItem 
-        :foodName="foodItem.F_Name"
-        :restaurant="foodItem.R_Name"
-        :foodType="foodItem.F_Type"
-        :calories="foodItem.F_Calorie"
-        :locations="foodItem.R_Name"
-        :description="foodItem.F_Desc"
-        :price="foodItem.F_Price"
-        :glutenFree="foodItem.Gluten_Free"
-        :vegan="foodItem.Vegan"
-        > </FoodMenuItem>
+        <FoodMenuItem :foodItem="foodItem"></FoodMenuItem>
 
       </div>
   </div>
@@ -63,7 +53,21 @@ export default {
         city:'default',
         distance:-1,
         
-        menuItems: null,
+        tempMenuItems: [],
+        menuItems: [
+        {
+          foodName: "null",
+          restaurantName: "null",
+          foodType: "null",
+          calories: -1,
+          description: "null",
+          price: -1.0,
+          glutenFree: -1,
+          vegan: -1,
+
+        },
+
+        ], 
 
     }
       
@@ -71,22 +75,40 @@ export default {
     created() {
     axios.get("http://localhost:3000/ChowNowDatabase").then((result) => {
       console.log(result.data.data);
-      this.menuItems = result.data.data;
-      console.log(this.menuItems);
+      this.tempMenuItems = result.data.data;
+      console.log(this.tempMenuItems);
+      console.log(this.tempMenuItems[0].F_Name);
+      for (let i = 0; i < this.tempMenuItems.length; i++) {
+        const name = this.tempMenuItems[0].F_Name;
+        const restaurant = this.tempMenuItems[0].R_Name;
+        const type = this.tempMenuItems[0].F_Type;
+        const calories = this.tempMenuItems[0].F_Calorie;
+        const description = this.tempMenuItems[0].F_Desc;
+        const price = this.tempMenuItems[0].F_Price;
+        const glutenFree = this.tempMenuItems[0].Gluten_Free;
+        const vegan = this.tempMenuItems[0].vegan;
+        
+        AddFoodItem(i, name, restaurant, type, calories, description, price, glutenFree, vegan);
+
+        console.log(this.menuItems[0]);
+      }
     })
     },
     methods: {
-        Location: function(city, distanceFromUser) {
-            this.city = city;
-            this.distanceFromUser = distanceFromUser; //Calculate Me
-            console.log(city);
-            console.log(distanceFromUser);
+        FoodItem: function(name, restaurant, type, calories, description, price, glutenFree, vegan) {
+            this.name = name;
+            this.restaurant = restaurant;
+            this.type = type;
+            this.calories = calories;
+            this.description = description;
+            this.price = price;
+            this.glutenFree = glutenFree;
+            this.vegan = vegan;
+
         },
-        AddLocation: function(city, distanceFromUser) { //Creates new location in array
-            if (this.menuItem.numLocations < 3) {
-                this.menuItem.locations[this.menuItem.numLocations] = new this.Location(city, distanceFromUser);
-                this.menuItem.numLocations++;
-            }
+        AddFoodItem: function(index, name, restaurant, type, calories, description, price, glutenFree, vegan) { //Creates new location in array
+          this.menuItems[index] = new this.FoodItem(name, restaurant, type, calories, description, price, glutenFree, vegan);
+          console.log("Food Added");
         }
         //eyo
     },
