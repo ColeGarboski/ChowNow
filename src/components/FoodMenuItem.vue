@@ -2,22 +2,22 @@
     <div class="menu-item">
         <img class="food-image" src="src/assets/burger.png" alt="Burger" width="500" height="600" />
         <div class="food-attributes">
-          <h2 style="text-align:center;">{{ foodName }}</h2> <!-- make dynamic font size-->
+          <h2 style="text-align:center;">{{ foodItem.name }}</h2> <!-- make dynamic font size-->
           <ul>
-            <li>{{ restaurant }}</li>
-            <li>{{ foodType }}</li>
-            <li>{{ calories }} cal</li>
-            <li>${{ price }}</li>
+            <li>{{ foodItem.restaurant }}</li>
+            <li>{{ foodItem.type }}</li>
+            <li>{{ foodItem.calories }} cal</li>
+            <li>${{ foodItem.price }}</li>
           </ul>
           <ul>
-            <li v-for="location in menuItem.locations" :key="location">
-              {{ locations }} ({{ locations }} mi)
+            <li v-for="location in foodItem.locations" :key="location">
+              {{ location.city }} ({{ location.distanceFromUser }} mi)
             </li>
           </ul>
     
         </div>
         <div class="food-description">
-          <h1>{{ description }}</h1> <!-- make dynamic font size-->
+          <h1>{{ foodItem.description }}</h1> <!-- make dynamic font size-->
         </div>
       </div>
   </template>
@@ -59,18 +59,7 @@
         
       },
       methods: {
-          Location: function(city, distanceFromUser) {
-              this.city = city;
-              this.distanceFromUser = distanceFromUser; //Calculate Me
-              console.log(city);
-              console.log(distanceFromUser);
-          },
-          AddLocation: function(city, distanceFromUser) { //Creates new location in array
-              if (this.menuItem.numLocations < 3) {
-                  this.menuItem.locations[this.menuItem.numLocations] = new this.Location(city, distanceFromUser);
-                  this.menuItem.numLocations++;
-              }
-          }
+          
           //eyo
       },
       computed: {
