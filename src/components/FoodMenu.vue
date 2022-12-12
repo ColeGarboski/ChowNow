@@ -41,6 +41,9 @@ export default {
   name: 'food-menu',
   data: function(){
     return {
+        userLat: 0.0000000,
+        userLng: 0.0000000,
+
         typeBurger: false,
         typeChicken: false,
         typeTacos: false,
@@ -79,7 +82,14 @@ export default {
       
     },
     created() {
+
+    this.GetUserLocation();
+    console.log(this.userLat);
+    console.log(this.userLng);
+    
     axios.get("http://localhost:3000/ChowNowDatabase").then((result) => {
+
+      
       console.log(result.data.data);
       this.tempMenuItems = result.data.data;
       console.log(this.tempMenuItems);
@@ -116,7 +126,7 @@ export default {
                   lat: this.tempMenuItems[i].R_lat,
                   lng: this.tempMenuItems[i].R_long,
                   city: this.tempMenuItems[i].R_city,
-                  distanceFromUser: -1,
+                  distanceFromUser: this.GetDistance(this.userLat, this.userLng, this.tempMenuItems[i].R_lat, this.tempMenuItems[i].R_long)
               };
               this.menuItems[k].locations.push(location);
               console.log("Location added to " + this.menuItems[k]);
@@ -178,6 +188,34 @@ export default {
         FlipVegan: function() {
           this.isVegan = !this.isVegan;
         },
+        GetDistance: function (userLat, userLng, restaurantLat, restaurantLng) {
+          // Convert the latitudes and longitudes from degrees to radians
+          const userLatRadians = (userLat * Math.PI) / 180;
+          const userLngRadians = (userLng * Math.PI) / 180;
+          const restaurantLatRadians = (restaurantLat * Math.PI) / 180;
+          const restaurantLngRadians = (restaurantLng * Math.PI) / 180;
+
+          // Calculate the difference between the latitudes and longitudes
+          const latDiff = restaurantLatRadians - userLatRadians;
+          const lngDiff = restaurantLngRadians - userLngRadians;
+
+          // Use the Haversine formula to calculate the distance between the two points
+          const a =
+            Math.pow(Math.sin(latDiff / 2), 2) +
+            Math.cos(userLatRadians) * Math.cos(restaurantLatRadians) * Math.pow(Math.sin(lngDiff / 2), 2);
+          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          const EARTH_RADIUS_IN_MILES = 3959;
+          const distance = EARTH_RADIUS_IN_MILES * c;
+
+          return distance;
+        },
+        GetUserLocation: function(){
+            navigator.geolocation.getCurrentPosition((position) => {
+                this.userLat = position.coords.latitude;
+                this.userLng = position.coords.longitude;
+            });
+        },
+
     },
     computed: {
 
