@@ -25,9 +25,6 @@
           <router-link to="/chow" tag="button">Sub</router-link>
         </div>
       </div>
-
-
-
     </div>
   </body>
 </div>
@@ -82,6 +79,7 @@
 .banner{
   width: 100%;
   height: 100vh;
+  background: #2f2fa2;
   background-image: url('assets/bg.jpg');
   background-size: cover;
   background-position: center;

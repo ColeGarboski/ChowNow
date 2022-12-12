@@ -3,27 +3,40 @@
     <head>
     <title>ChowNow</title>
   </head>
-  <body>
+  <body class="head">
     <div class="banner">
       <div class="navbar">
         <h1 class ="logo">ChowNow</h1>
         <ul>
-          <li><button class="button-1" type="button" onclick="isGlutenFree=true">Gluten Free</button></li>
-          <li><button class="button-1" role="button">Vegan</button></li>
-          <li><button class="button-1" role="button">Look for different food</button></li>
+          <li><a href="#" class="button-1">Gluten Free</a></li>
+          <li><a href="#" class="button-1">Vegan</a></li>
+          <li><a href="#" class="button-1">Look for Different Food</a></li>
         </ul>
       </div>
       <div class="content">
         <h1>Now its time to decide...</h1>
         <p>Below you will find an assortment of cards that are organized for your viewing</p>
       </div>
+      <div>
+        <section class="container">
       <div class ="card" v-for="(foodItem, index) in this.menuItems" :key="index">
         <FoodMenuItem :foodItem="foodItem"></FoodMenuItem>
-
       </div>
-  </div>
-</body>
+      <div class ="card" v-for="(foodItem, index) in this.menuItems" :key="index">
+        <FoodMenuItem :foodItem="foodItem"></FoodMenuItem>
+      </div>
+      <div class ="card" v-for="(foodItem, index) in this.menuItems" :key="index">
+        <FoodMenuItem :foodItem="foodItem"></FoodMenuItem>
+      </div>
+    </section>
+        </div>
+    </div>
+  </body>
+
+
+      
 </div>
+
 </template>
 
 <script>
@@ -184,7 +197,14 @@ export default {
   font-family: sans-serif;
 }
 .card{
-  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+}
+.container {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .button-1{
   background-color: #f64c72;
@@ -211,12 +231,10 @@ export default {
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-
 .button-1:hover,
 .button-1:focus {
   background-color: #FFFFFF;
 }
-
 .banner{
   width: 100%;
   height: 100vh;
@@ -283,4 +301,5 @@ export default {
   line-height: 25px;
   color: white;
 }
+
 </style>

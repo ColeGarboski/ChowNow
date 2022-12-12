@@ -1,24 +1,16 @@
 <template>
     <div class="menu-item">
-        <img class="food-image" src="src/assets/burger.png" alt="Burger" width="500" height="600" />
-        <div class="food-attributes">
-          <h2 style="text-align:center;">{{ foodItem.name }}</h2> <!-- make dynamic font size-->
-          <ul>
-            <li>{{ foodItem.restaurant }}</li>
-            <li>{{ foodItem.type }}</li>
-            <li>{{ foodItem.calories }} cal</li>
-            <li>${{ foodItem.price }}</li>
-          </ul>
-          <ul>
-            <li v-for="location in foodItem.locations" :key="location">
-              {{ location.city }} ({{ location.distanceFromUser }} mi)
-            </li>
-          </ul>
-    
+        <div class="card">
+          <div class="card-image"></div>
+        <h2>Big Mac</h2>
+        <p>Mcdonald's</p>
+        <p>Calories: 500</p>
+        <p>Price: $100</p>
+        <p>Locations: Manchester, Concord</p>
+        <p>Distance: 2mi, 6mi</p>
+        <a href="#" class="button-1">Directions</a>
         </div>
-        <div class="food-description">
-          <h1>{{ foodItem.description }}</h1> <!-- make dynamic font size-->
-        </div>
+
       </div>
   </template>
   
@@ -74,34 +66,73 @@
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style scoped>
-  .menu-item {
-      position: relative;
-      float: left;
-      width: 370px;
-      height: 250px;
-      padding: 10px;
-      border: 2px inset rgb(64, 64, 64); 
-      margin-left: 20px;
-      margin-top: 5px;
+  *{
+   margin: 0;
+   padding: 0;
+   font-family: sans-serif;
+   box-sizing: border-box;
   }
-  .food-image {
-      position: absolute;
-  
-      width: 185px;
-      height: 125px;
+  body {
+    background: black;
   }
-  .food-attributes {
-      position: absolute;
-      right: 10px;
-      height: 220px;
-      width: 185px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  p{
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 2.5px;
   }
-  .food-description {
-      position: absolute;
-      bottom: 10px;
-      width: 185px;
-      height: 125px;
-  }
+
+.card{
+  background: white;
+  width: 270px;
+  height: 400px;
+  margin: 10px;
+  border-radius: 15px;
+  text-align: center;
+  display: block;
+}
+.card:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all 0.7s ease;
+}
+
+.card-image {
+  height: 170px;
+  margin-bottom: 15px;
+  background-image: url("https://s3-media0.fl.yelpcdn.com/bphoto/xxXLAvkl6cBSnK4RFmB6Xw/348s.jpg");
+  background-size: cover;
+  border-radius: 15px 15px 0 0;
+}
+.button-1 {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 35px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: #F082AC;
+}
   </style>
   
