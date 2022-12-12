@@ -43,8 +43,8 @@ export default {
     return {
         typeBurger: false,
         typeChicken: false,
-        typeSalad: false,
-        typePizza: false,
+        typeTacos: false,
+        typeSub: false,
         typePasta: false,
         isGlutenFree: false,
         isVegan: false,
