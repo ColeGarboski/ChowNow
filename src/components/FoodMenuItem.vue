@@ -2,12 +2,12 @@
     <div class="menu-item">
         <div class="card">
           <div class="card-image"></div>
-        <h2>Big Mac</h2>
-        <p>Mcdonald's</p>
-        <p>Calories: 500</p>
-        <p>Price: $100</p>
-        <p>Locations: Manchester, Concord</p>
-        <p>Distance: 2mi, 6mi</p>
+        <h2>{{ foodItem.name }}</h2>
+        <p>{{ foodItem.restaurant }}</p>
+        <p>Calories: {{ foodItem.calories }}</p>
+        <p>Price: ${{ foodItem.price }}</p>
+        <p>Locations: {{ foodItem.locations[0].city }}, {{ foodItem.locations[1].city }}</p>
+        <p>Distance: {{ foodItem.locations[0].distanceFromUser }}mi, {{ foodItem.locations[1].distanceFromUser }}mi</p>
         <a href="#" class="button-1">Directions</a>
         </div>
 

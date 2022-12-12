@@ -8,9 +8,9 @@
       <div class="navbar">
         <h1 class ="logo">ChowNow</h1>
         <ul>
-          <li><a href="#" class="button-1">Gluten Free</a></li>
-          <li><a href="#" class="button-1">Vegan</a></li>
-          <li><a href="#" class="button-1">Look for Different Food</a></li>
+          <li><button @click="FlipGluten" class="button-1">Gluten Free {{ isGlutenFree }}</button></li>
+          <li><button @click="FlipVegan" class="button-1">Vegan {{ isVegan }}</button></li>
+          <li><a href="" class="button-1">Look for Different Food</a></li>
         </ul>
       </div>
       <div class="content">
@@ -19,14 +19,8 @@
       </div>
       <div>
         <section class="container">
-      <div class ="card" v-for="(foodItem, index) in this.menuItems" :key="index">
-        <FoodMenuItem :foodItem="foodItem"></FoodMenuItem>
-      </div>
-      <div class ="card" v-for="(foodItem, index) in this.menuItems" :key="index">
-        <FoodMenuItem :foodItem="foodItem"></FoodMenuItem>
-      </div>
-      <div class ="card" v-for="(foodItem, index) in this.menuItems" :key="index">
-        <FoodMenuItem :foodItem="foodItem"></FoodMenuItem>
+      <div v-for="(foodItem, index) in this.menuItems" :key="index">
+        <FoodMenuItem class="card" :foodItem="foodItem"></FoodMenuItem>
       </div>
     </section>
         </div>
@@ -54,7 +48,6 @@ export default {
         typePasta: false,
         isGlutenFree: false,
         isVegan: false,
-        isForPets: false,
 
         createdFoods: [],
         tempMenuItems: [],
@@ -178,7 +171,13 @@ export default {
                   this.menuItem.locations[this.menuItem.numLocations] = new this.Location(city, distanceFromUser, lat, long);
                   this.menuItem.numLocations++;
               }
-          }
+          },
+        FlipGluten: function() {
+          this.isGlutenFree = !this.isGlutenFree;
+        },
+        FlipVegan: function() {
+          this.isVegan = !this.isVegan;
+        },
     },
     computed: {
 
