@@ -1,35 +1,36 @@
 <template>
   <div id="food-menu"> <!--In app.js-->
-    <h1 class="logo" style="text-align:left;">ChowNow</h1>
-      <div class="filters">
-        <input type="checkbox" id="burger" name="burger" v-model="typeBurger">
-        <label for="burger"> Burger (numNearby) {{ typeBurger }}</label>
-        <br>
-        <input type="checkbox" id="pasta" name="pasta" v-model="typePasta">
-        <label for="pasta"> Pasta (numNearby) {{ typePasta }}</label>
-        <br>
-        <input type="checkbox" id="chicken" name="chicken" v-model="typeChicken">
-        <label for="chicken"> Fried Chicken (numNearby) {{ typeChicken }}</label>
-        <br>
-        <input type="checkbox" id="tacos" name="tacos" v-model="typeTacos">
-        <label for="tacos"> Tacos (numNearby) {{ typeTacos }}</label>
-        <br>
-        <input type="checkbox" id="sub" name="sub" v-model="typeSub">
-        <label for="sub"> Sub (numNearby) {{ typeSub }}</label>
-        <br>
-        <input type="checkbox" id="gluten" name="gluten" v-model="isGlutenFree">
-        <label for="gluten"> Gluten Free {{ isGlutenFree }}</label>
-        <br>
-        <input type="checkbox" id="vegan" name="vegan" v-model="isVegan">
-        <label for="vegan"> Vegan {{ isVegan }}</label>
-        <br>
-        
+    <head>
+    <title>ChowNow</title>
+  </head>
+  <body class="head">
+    <div class="banner">
+      <div class="navbar">
+        <h1 class ="logo">ChowNow</h1>
+        <ul>
+          <li><button @click="FlipGluten" class="button-1">Gluten Free {{ isGlutenFree }}</button></li>
+          <li><button @click="FlipVegan" class="button-1">Vegan {{ isVegan }}</button></li>
+          <li><a href="" class="button-1">Look for Different Food</a></li>
+        </ul>
       </div>
+      <div class="content">
+        <h1>Now its time to decide...</h1>
+        <p>Below you will find an assortment of cards that are organized for your viewing</p>
+      </div>
+      <div>
+        <section class="container">
       <div v-for="(foodItem, index) in this.menuItems" :key="index">
-        <FoodMenuItem :foodItem="foodItem"></FoodMenuItem>
-
+        <FoodMenuItem class="card" :foodItem="foodItem"></FoodMenuItem>
       </div>
-  </div>
+    </section>
+        </div>
+    </div>
+  </body>
+
+
+      
+</div>
+
 </template>
 
 <script>
@@ -170,7 +171,13 @@ export default {
                   this.menuItem.locations[this.menuItem.numLocations] = new this.Location(city, distanceFromUser, lat, long);
                   this.menuItem.numLocations++;
               }
-          }
+          },
+        FlipGluten: function() {
+          this.isGlutenFree = !this.isGlutenFree;
+        },
+        FlipVegan: function() {
+          this.isVegan = !this.isVegan;
+        },
     },
     computed: {
 
@@ -183,16 +190,115 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.filters {
-    float: left;
-    height: 700px;
-    width: 200px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color:rgb(172, 165, 165);
-    text-align: left;
-    text-decoration: underline;
-    font-size: large;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
 }
+.card{
+  display: flex;
+  justify-content: center;
+}
+.container {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.button-1{
+  background-color: #f64c72;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.button-1:hover,
+.button-1:focus {
+  background-color: #FFFFFF;
+}
+.banner{
+  width: 100%;
+  height: 100vh;
+  background-image: url('assets/bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.logo{
+  width: 120px;
+  color: #f64c72;
+  cursor: pointer;
+}
+.navbar{
+  width: 85%;
+  margin: auto;
+  padding: 35px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar ul li{
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+}
+.navbar ul li a{
+  text-decoration: none;
+  color: white;
+  text-transform:  uppercase;  
+}
+.navbar ul li::after{
+  content: '';
+  height: 3px;
+  width: 0%;
+  background: #f64c72;
+  position: absolute;
+  left: 0;  
+  bottom: -10px;
+  transition: 0.5s;
+}
+.navbar ul li:hover::after{
+  width: 100%;
+}
+.navbar ul li:click{
+  width: 100%;
+}
+.content{
+  width: 100%;
+  position: absolute;
+  top: 17.5%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #000000
+}
+.content h1{
+  font-size: 70px;
+  margin-top: 80px;
+  color:#f64c72
+}
+.content p{
+  margin: 20px auto;
+  font-weight: 100;
+  line-height: 25px;
+  color: white;
+}
+
 </style>

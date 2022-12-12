@@ -25,9 +25,6 @@
           <router-link to="/chow" tag="button">Sub</router-link>
         </div>
       </div>
-
-
-
     </div>
   </body>
 </div>
