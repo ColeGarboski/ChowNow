@@ -8,8 +8,8 @@
       <div class="navbar">
         <h1 class ="logo">ChowNow</h1>
         <ul>
-          <li><button @click="FlipGluten" class="button-1">Gluten Free {{ isGlutenFree }}</button></li>
-          <li><button @click="FlipVegan" class="button-1">Vegan {{ isVegan }}</button></li>
+          <li><button @click="FlipGluten" class="button-1">Gluten Free</button></li>
+          <li><button @click="FlipVegan" class="button-1">Vegan</button></li>
           <li><a href="/" class="button-1" disabled="false">Look for Different Food</a></li>
         </ul>
       </div>
@@ -19,8 +19,8 @@
       </div>
       <div>
         <section class="container">
-      <div v-for="foodItem in this.menuItems" :key="foodItem.name">
-        <FoodMenuItem v-if="(IsEqual($route.params.foodType, foodItem.type))"
+      <div v-for="foodItem in this.menuItems" :key="foodItem.name"> 
+        <FoodMenuItem v-if="IsReallyEqual($route.params.foodType, foodItem.type, isGlutenFree, foodItem.glutenFree, isVegan, foodItem.vegan)"
                              class="card" :foodItem="foodItem"></FoodMenuItem>
                              <!--<FoodMenuItem v-if="(IsEqual($route.params.foodType, foodItem.type)) && 
                             (foodItem.glutenFree == this.isGlutenFree) && 
@@ -233,6 +233,25 @@ export default {
             return false;
           }
         },
+        IsReallyEqual: function(one, two, three, four, five, six) {
+          console.log(one);
+          console.log(two);
+          console.log(three);
+          console.log(four);
+          console.log(five);
+          console.log(six);
+          
+          const temp1 = this.IsEqual(one, two);
+          const temp2 = this.IsEqual(three, four);
+          const temp3 = this.IsEqual(five, six);
+
+          if (temp1 && temp2 && temp3) {
+            return true;
+          }
+          else {
+            return false;
+          }
+        }
 
     },
     computed: {
