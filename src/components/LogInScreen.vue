@@ -1,36 +1,59 @@
 <template>
-  <div id="login-page">
-    <input type="text" placeholder="Username" name="username" v-model="username">
-    <input type="text" placeholder="Password" name="password" v-model="password">
-    <button>Log-In</button>
+  <div class="center background" id="login-page">
+
+    <input 
+      type="text" 
+      placeholder="Username" 
+      name="username" 
+      v-model="username"
+    >
+    <input 
+      type="text" 
+      placeholder="Password" 
+      name="password" 
+      v-model="password"
+    >
+    <button>
+      Log-In
+    </button>
     <br>
-    <router-link to="/forgot" tag="button">Forgot Password?</router-link>
+    <router-link 
+      to="/forgot" 
+      tag="button"
+    >Forgot Password?</router-link>
     <button>Create Account</button>
   </div>
 </template>
     
 <script>
-    export default {
-      name: 'login-page',
-      data: function() {
-          return {
-              
-          }
-      },
-      methods: {
-          
-          
-      },
-      computed: {
-  
-      },
-      props: {
-      }
+export default {
+  name: 'login-page',
+  data: function () {
+    return {
+      password:"",
+      username:"",
     }
-  </script>
+  },
+  methods: {
+
+
+  },
+  computed: {
+
+  },
+  props: {
+  }
+}
+</script>
     
     <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    
-  </style>
+.background {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+</style>
     
