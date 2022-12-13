@@ -15,11 +15,7 @@ export default {
 </script>
 
 <style>
-
-.center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+body {
+  margin: 0 !important;
 }
-
 </style>

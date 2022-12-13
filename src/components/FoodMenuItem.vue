@@ -1,24 +1,17 @@
 <template>
-    <div class="menu-item"> <!--put into vue component-->
-        <img class="food-image" src="src/assets/burger.png" alt="Burger" width="500" height="600" />
-        <div class="food-attributes">
-          <h2 style="text-align:center;">{{ menuItem.name }}</h2> <!-- make dynamic font size-->
-          <ul>
-            <li>{{ menuItem.restaurant }}</li>
-            <li>{{ menuItem.foodType }}</li>
-            <li>{{ menuItem.calories }} cal</li>
-          </ul>
-          <ul>
-            <li v-for="location in menuItem.locations" :key="location">
-              {{ location.city }} ({{ location.distanceFromUser }} mi)
-            </li>
-          </ul>
-    
+    <div class="menu-item">
+        <div class="card">
+          <div class="card-image"></div>
+        <h2>{{ foodItem.name }}</h2>
+        <p>{{ foodItem.restaurant }}</p>
+        <p>Calories: {{ foodItem.calories }}</p>
+        <p>Price: ${{ foodItem.price }}</p>
+        <p>Locations: {{ foodItem.locations[0].city }}, {{ foodItem.locations[1].city }}</p>
+        <p>Distance: {{ Math.round(foodItem.locations[0].distanceFromUser) }}mi, {{ Math.round(foodItem.locations[1].distanceFromUser) }}mi</p>
+        <a href="#" class="button-1">Directions</a>
         </div>
-        <div class="food-description">
-          <h1>{{ menuItem.description }}</h1> <!-- make dynamic font size-->
-        </div>
-      </div> <!--put into vue component-->
+
+      </div>
   </template>
   
   <script>
@@ -26,87 +19,93 @@
     name: 'food-menu-item',
     data: function(){
       return {
-          city:'default',
-          distance:-1,
-          menuItem: {
-              name:'Big Mac',
-              restaurant:'McDonalds',
-              foodType:'Burger',
-              calories:600,
-              numLocations:2,
-              locations: [ //Play with having multiple location objects within here
-                  {
-                      city: 'Manchester',
-                      distanceFromUser: 2
-                  },
-                  {
-                      city: 'Concord',
-                      distanceFromUser: 6
-                  }
-  
-  
-  
-              ],
-              description: 'mcdonalds new burger',
-  
-          },
-  
+          
       }
         
       },
       methods: {
-          Location: function(city, distanceFromUser) {
-              this.city = city;
-              this.distanceFromUser = distanceFromUser; //Calculate Me
-              console.log(city);
-              console.log(distanceFromUser);
-          },
-          AddLocation: function(city, distanceFromUser) { //Creates new location in array
-              if (this.menuItem.numLocations < 3) {
-                  this.menuItem.locations[this.menuItem.numLocations] = new this.Location(city, distanceFromUser);
-                  this.menuItem.numLocations++;
-              }
-          }
+          
           //eyo
       },
       computed: {
   
       },
     props: {
+      foodItem: Object,
+
     }
   }
   </script>
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style scoped>
-  .menu-item {
-      position: relative;
-      float: left;
-      width: 370px;
-      height: 250px;
-      padding: 10px;
-      border: 2px inset rgb(64, 64, 64); 
-      margin-left: 20px;
-      margin-top: 5px;
+  *{
+   margin: 0;
+   padding: 0;
+   font-family: sans-serif;
+   box-sizing: border-box;
   }
-  .food-image {
-      position: absolute;
-  
-      width: 185px;
-      height: 125px;
+  body {
+    background: black;
   }
-  .food-attributes {
-      position: absolute;
-      right: 10px;
-      height: 220px;
-      width: 185px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  p{
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 2.5px;
   }
-  .food-description {
-      position: absolute;
-      bottom: 10px;
-      width: 185px;
-      height: 125px;
-  }
+
+.card{
+  background: white;
+  width: 270px;
+  height: 400px;
+  margin: 10px;
+  border-radius: 15px;
+  text-align: center;
+  display: block;
+}
+.card:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all 0.7s ease;
+}
+
+.card-image {
+  height: 170px;
+  margin-bottom: 15px;
+  background-image: url("https://s3-media0.fl.yelpcdn.com/bphoto/xxXLAvkl6cBSnK4RFmB6Xw/348s.jpg");
+  background-size: cover;
+  border-radius: 15px 15px 0 0;
+}
+.button-1 {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 35px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: #F082AC;
+}
   </style>
   

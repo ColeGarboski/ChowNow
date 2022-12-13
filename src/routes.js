@@ -7,7 +7,7 @@ import ForgotPasswordPage from './components/ForgotPasswordPage.vue';
 
 export default [
     {path: '/', component: HomePage},
-    {path: '/chow', component: FoodMenu}, ///:posX/:posY/:foodType
+    {path: '/chow/:foodType', component: FoodMenu}, ///:posX/:posY/:foodType
     {path: '/create', component: CreateAccount},
     {path: '/login', component: LogInScreen},
     {path: '/users', component: UserPage},
