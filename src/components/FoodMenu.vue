@@ -8,9 +8,9 @@
       <div class="navbar">
         <h1 class ="logo">ChowNow</h1>
         <ul>
-          <li><button @click="FlipGluten" class="button-1" disabled="false">Gluten Free {{ isGlutenFree }}</button></li>
-          <li><button @click="FlipVegan" class="button-1" disabled="false">Vegan {{ isVegan }}</button></li>
-          <li><a href="#" class="button-1" disabled="false">Look for Different Food</a></li>
+          <li><button @click="FlipGluten" class="button-1">Gluten Free {{ isGlutenFree }}</button></li>
+          <li><button @click="FlipVegan" class="button-1">Vegan {{ isVegan }}</button></li>
+          <li><a href="/" class="button-1" disabled="false">Look for Different Food</a></li>
         </ul>
       </div>
       <div class="content">
