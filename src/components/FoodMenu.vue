@@ -273,9 +273,7 @@ export default {
   padding: 0;
   font-family: sans-serif;
 }
-body {
-  
-}
+
 .card{
   display: flex;
   justify-content: center;
@@ -319,6 +317,7 @@ body {
   width: 100%;
   height: 100vh;
   background-image: url('assets/bg.jpg');
+  background-attachment: fixed;
   background-size: cover;
   background-position: center;
   
