@@ -3,14 +3,14 @@
     <head>
     <title>ChowNow</title>
   </head>
-  <body class="head">
+  <body>
     <div class="banner">
       <div class="navbar">
         <h1 class ="logo">ChowNow</h1>
         <ul>
-          <li><button @click="FlipGluten" class="button-1">Gluten Free {{ isGlutenFree }}</button></li>
-          <li><button @click="FlipVegan" class="button-1">Vegan {{ isVegan }}</button></li>
-          <li><a href="" class="button-1">Look for Different Food</a></li>
+          <li><button @click="FlipGluten" class="button-1" disabled="false">Gluten Free {{ isGlutenFree }}</button></li>
+          <li><button @click="FlipVegan" class="button-1" disabled="false">Vegan {{ isVegan }}</button></li>
+          <li><a href="#" class="button-1" disabled="false">Look for Different Food</a></li>
         </ul>
       </div>
       <div class="content">
@@ -195,6 +195,9 @@ export default {
   padding: 0;
   font-family: sans-serif;
 }
+body {
+  
+}
 .card{
   display: flex;
   justify-content: center;
@@ -240,6 +243,7 @@ export default {
   background-image: url('assets/bg.jpg');
   background-size: cover;
   background-position: center;
+  
 }
 .logo{
   width: 120px;
@@ -249,10 +253,12 @@ export default {
 .navbar{
   width: 85%;
   margin: auto;
+  margin-bottom: 80px;
   padding: 35px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
 }
 .navbar ul li{
   list-style: none;
@@ -287,11 +293,11 @@ export default {
   top: 17.5%;
   transform: translateY(-50%);
   text-align: center;
-  color: #000000
+  color: #000000;
+  margin-top: 80px;
 }
 .content h1{
   font-size: 70px;
-  margin-top: 80px;
   color:#f64c72
 }
 .content p{
@@ -299,6 +305,10 @@ export default {
   font-weight: 100;
   line-height: 25px;
   color: white;
+}
+
+.filters {
+  margin-bottom: 80px;
 }
 
 </style>
