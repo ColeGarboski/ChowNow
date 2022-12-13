@@ -7,7 +7,7 @@
         <p>Calories: {{ foodItem.calories }}</p>
         <p>Price: ${{ foodItem.price }}</p>
         <p>Locations: {{ foodItem.locations[0].city }}, {{ foodItem.locations[1].city }}</p>
-        <p>Distance: {{ foodItem.locations[0].distanceFromUser }}mi, {{ foodItem.locations[1].distanceFromUser }}mi</p>
+        <p>Distance: {{ Math.round(foodItem.locations[0].distanceFromUser) }}mi, {{ Math.round(foodItem.locations[1].distanceFromUser) }}mi</p>
         <a href="#" class="button-1">Directions</a>
         </div>
 

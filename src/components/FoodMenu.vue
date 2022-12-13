@@ -19,8 +19,8 @@
       </div>
       <div>
         <section class="container">
-      <div v-for="(foodItem, index) in this.menuItems" :key="index">
-        <FoodMenuItem class="card" :foodItem="foodItem"></FoodMenuItem>
+      <div v-for="foodItem in this.menuItems" :key="foodItem.name">
+        <FoodMenuItem v-if="IsEqual($route.params.foodType, foodItem.type)" class="card" :foodItem="foodItem"></FoodMenuItem>
       </div>
     </section>
         </div>
@@ -84,8 +84,8 @@ export default {
     created() {
 
     this.GetUserLocation();
-    console.log(this.userLat);
-    console.log(this.userLng);
+    console.log("Lat:" + this.userLat);
+    console.log("Long:" + this.userLng);
     
     axios.get("http://localhost:3000/ChowNowDatabase").then((result) => {
 
@@ -138,6 +138,9 @@ export default {
 
       console.log(this.menuItems);
 
+      this.FlipGluten(); //Fixes the card update issue lol
+      this.FlipGluten();
+      
     })
     },
     methods: {
@@ -215,6 +218,16 @@ export default {
                 this.userLng = position.coords.longitude;
             });
         },
+        IsEqual: function(lhs, rhs) {
+          console.log("if");
+          console.log(lhs + " " + rhs);
+          if (lhs == rhs) {
+            return true;
+          }
+          else {
+            return false;
+          }
+        },
 
     },
     computed: {
@@ -222,6 +235,9 @@ export default {
     },
   components: {
     FoodMenuItem
+  },
+  props: {
+    
   }
 }
 </script>
