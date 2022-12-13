@@ -20,7 +20,12 @@
       <div>
         <section class="container">
       <div v-for="foodItem in this.menuItems" :key="foodItem.name">
-        <FoodMenuItem v-if="IsEqual($route.params.foodType, foodItem.type)" class="card" :foodItem="foodItem"></FoodMenuItem>
+        <FoodMenuItem v-if="(IsEqual($route.params.foodType, foodItem.type))"
+                             class="card" :foodItem="foodItem"></FoodMenuItem>
+                             <!--<FoodMenuItem v-if="(IsEqual($route.params.foodType, foodItem.type)) && 
+                            (foodItem.glutenFree == this.isGlutenFree) && 
+                            (foodItem.vegan == this.isVegan)"
+                             class="card" :foodItem="foodItem"></FoodMenuItem>-->
       </div>
     </section>
         </div>

@@ -20,7 +20,7 @@
         <div>
           <router-link to="/chow/burger" tag="button">Burger</router-link>
           <router-link to="/chow/pasta" tag="button">Pasta</router-link>
-          <router-link to="/chow/chicken" tag="button">Fried Chicken</router-link>
+          <router-link to="/chow/chicken" tag="button">Chicken</router-link>
           <router-link to="/chow/tacos" tag="button">Tacos</router-link>
           <router-link to="/chow/sub" tag="button">Sub</router-link>
         </div>
