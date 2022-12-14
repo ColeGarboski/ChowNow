@@ -6,7 +6,7 @@ use chownow;
 
 create table R_LOCATION (RL_ID int(255), R_ID int(255), R_lat decimal(10,7), R_long decimal(10,7), R_state varchar(50), R_street varchar(100), R_city varchar(100), R_zip int(255), PRIMARY KEY (RL_ID) );  
 
-create table FOODITEM (F_ID int(255), F_Calorie int(255), F_Type varchar(50), F_Name varchar(50), F_Price decimal(65,2), F_Desc varchar(300), PRIMARY KEY (F_ID), Vegan bool, Gluten_Free bool);
+create table FOODITEM (F_ID int(255), F_Calorie int(255), F_Type varchar(50), F_Name varchar(50), F_Price decimal(65,2), F_Desc varchar(300), PRIMARY KEY (F_ID), Vegan bool, Gluten_Free bool, Food_Img varchar(300) );
 
 create table MENU ( F_ID int(255), RL_ID int(255), PRIMARY KEY (F_ID,RL_ID) );
 
@@ -30,29 +30,32 @@ insert into R_LOCATION (RL_ID , R_ID , R_lat , R_long , R_state , R_street , R_c
 
 
 
-insert into FOODITEM (F_ID, F_Calorie, F_Type, F_Name, F_Price, F_Desc, Gluten_Free, Vegan ) values 
-(1, 670, 'burger', 'Whopper', 6.59, 'A 1/4lb of flame-grilled beef patty', 0, 0 ),
-(2, 400, 'chicken', 'McChicken', 3.59, 'Savor the satisfying crunch of our juicy chicken patty', 0, 0),
-(3, 470, 'chicken', 'Crispy Chicken Sandwich', 5.99, 'A southern style fried chicken sandwich thats crispy, juicy and tender perfection', 0,0),
-(4, 830, 'chicken', '20 Piece McNuggets', 8.69, 'Tender, juicy Chicken McNuggets are made with all white meat chicken',0,0),
-(5, 250, 'chicken', '6 Piece McNuggets', 3.89, 'Tender, juicy Chicken McNuggets are made with all white meat chicken', 0, 0),
-(6, 420, 'chicken', '10 Piece McNuggets', 6.59, 'Tender, juicy Chicken McNuggets are made with all white meat chicken', 0, 0),
-(7, 550, 'burger', 'Big Mac', 7.09, 'The McDonalds Big Mac is a 100% beef burger with a taste like no other', 0, 0),
-(8, 740, 'burger', 'Double Quarter Pounder with Cheese', 9.29, 'Two quarter pound 100% fresh beef burger patties that are hot, deliciously juicy and cooked when you order', 0, 0),
-(9, 300, 'burger', 'Cheeseburger', 2.59, 'Enjoy the cheesy deliciousness of a McDonalds Cheeseburger', 0, 0),
-(10, 662, 'chicken', 'Original Chicken Sandwich', 6.99, 'Lightly breaded chicken topped with crisp lettuce and creamy mayonnaise on a sesame seed bun.', 0, 0),
-(11, 657, 'chicken', 'BK Spicy Royal Crispy Chicken', 8.49, 'Crispy white meat breast filet coated with our triple pepper spicy glaze, topped with savory sauce.', 0, 0),
-(12, 1171, 'burger', 'Triple Whopper', 10.69, 'Three 1/4 lb flame-grilled beef patties on a toasted sesame seed bun.', 0, 0),
-(13, 785, 'sub', 'Firehouse Meatball', 11.70, 'Italian meatballs, melted provolone, zesty marinara, and Italian seasonings.', 0, 0),
-(14, 785, 'sub', 'Firehouse Steak & Cheese', 14.20, 'Sauteed steak with Provolone, topped with sauteed onions, bell peppers, mayo, mustard and a dill spear on the side.', 0, 0),
-(15, 384, 'tacos', 'Soft Taco Supreme', 3.59, 'A warm flour tortilla filled with seasoned beef, cool sour cream, crispy lettuce, shredded cheddar cheese and ripe tomatoes.', 0, 0),
-(16, 384, 'tacos', 'Crunchy Taco Supreme', 3.59, 'A crunchy taco shell filled with seasoned beef, cool sour cream, crispy lettuce, shredded cheddar cheese and ripe tomatoes.', 0, 0),
-(17, 326, 'tacos', 'Spicy Potato Soft Taco', 1.67, 'A flour tortilla filled with crispy potato bites, lettuce, real shredded cheddar cheese, and creamy chipotle sauce.', 0, 1),
-(18, 326, 'tacos', 'Black Bean Quesarito', 5.63, 'Cheese quesadilla wrapped around a black bean, seasoned rice, reduced fat source cream & chipotle sauce burrito.', 0, 1);
+insert into FOODITEM (F_ID, F_Calorie, F_Type, F_Name, F_Price, F_Desc, Gluten_Free, Vegan, Food_Img ) values 
+(1, 670, 'burger', 'Whopper', 6.59, 'A 1/4lb of flame-grilled beef patty', 0, 0, 'https://people.com/thmb/pnUCFAp_huTRq-F6qpwjkKayxzA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x0:751x2)/Whoppers-Birthday-PR-Image1-855697cd5f264ec09307d0f349d60a74.jpg' ),
+(2, 400, 'chicken', 'McChicken', 3.59, 'Savor the satisfying crunch of our juicy chicken patty', 0, 0, 'https://assets3.thrillist.com/v1/image/3101662/828x610/flatten;crop;webp=auto;jpeg_quality=60.jpg'),
+(3, 470, 'chicken', 'Crispy Chicken Sandwich', 5.99, 'A southern style fried chicken sandwich thats crispy, juicy and tender perfection', 0,0, 'https://cdn.cnn.com/cnnnext/dam/assets/210216180156-restricted-burger-king-new-chicken-sandwich-super-tease.jpg'),
+(4, 830, 'chicken', '20 Piece McNuggets', 8.69, 'Tender, juicy Chicken McNuggets are made with all white meat chicken',0,0, 'https://www.thesun.co.uk/wp-content/uploads/2021/08/NINTCHDBPICT000486990216-2.jpg'),
+(5, 250, 'chicken', '6 Piece McNuggets', 3.89, 'Tender, juicy Chicken McNuggets are made with all white meat chicken', 0, 0, 'https://www.thesun.co.uk/wp-content/uploads/2021/08/NINTCHDBPICT000486990216-2.jpg'),
+(6, 420, 'chicken', '10 Piece McNuggets', 6.59, 'Tender, juicy Chicken McNuggets are made with all white meat chicken', 0, 0, 'https://www.thesun.co.uk/wp-content/uploads/2021/08/NINTCHDBPICT000486990216-2.jpg'),
+(7, 550, 'burger', 'Big Mac', 7.09, 'The McDonalds Big Mac is a 100% beef burger with a taste like no other', 0, 0, 'https://hips.hearstapps.com/delish/assets/17/12/1490206019-big-mac-beauty.jpg'),
+(8, 740, 'burger', 'Double Quarter Pounder with Cheese', 9.29, 'Two quarter pound 100% fresh beef burger patties that are hot, deliciously juicy and cooked when you order', 0, 0, 'https://i0.wp.com/groovysauce.com/wp-content/uploads/2020/07/fc6b5-mcddoublequarterpounderwcheese.png?fit=680%2C383&ssl=1'),
+(9, 300, 'burger', 'Cheeseburger', 2.59, 'Enjoy the cheesy deliciousness of a McDonalds Cheeseburger', 0, 0, 'https://assets3.thrillist.com/v1/image/3053020/792x528/scale;webp=auto;jpeg_quality=60.jpg'),
+(10, 662, 'chicken', 'Original Chicken Sandwich', 6.99, 'Lightly breaded chicken topped with crisp lettuce and creamy mayonnaise on a sesame seed bun.', 0, 0, 'https://image.cnbcfm.com/api/v1/image/106273620-1604935214901-Screen_Shot_2019_12_09_at_105210_AM0.jpeg?v=1604935251'),
+(11, 764, 'chicken', 'BK Spicy Royal Crispy Chicken', 8.49, 'Crispy white meat breast filet coated with our triple pepper spicy glaze, topped with savory sauce.', 0, 0, 'https://fastfoodgeek.com/wp-content/uploads/2022/10/Screen-Shot-2022-10-20-at-12.58.04-PM.png'),
+(12, 1171, 'burger', 'Triple Whopper', 10.69, 'Three 1/4 lb flame-grilled beef patties on a toasted sesame seed bun.', 0, 0, 'https://cdn.foodbeast.com/content/uploads/2014/07/triple-whopper.jpg'),
+(13, 785, 'sub', 'Firehouse Meatball', 11.70, 'Italian meatballs, melted provolone, zesty marinara, and Italian seasonings.', 0, 0, 'https://i.ytimg.com/vi/DDlsZDyIOK8/maxresdefault.jpg'),
+(14, 785, 'sub', 'Firehouse Steak & Cheese', 14.20, 'Sauteed steak with Provolone, topped with sauteed onions, bell peppers, mayo, mustard and a dill spear on the side.', 0, 0, 'https://www.gannett-cdn.com/authoring/2018/09/13/NREP/ghows-OH-7599c941-7f26-4b7e-e053-0100007f8a16-21942b62.jpeg'),
+(15, 384, 'tacos', 'Soft Taco Supreme', 3.59, 'A warm flour tortilla filled with seasoned beef, cool sour cream, crispy lettuce, shredded cheddar cheese and ripe tomatoes.', 0, 0, 'https://i.pinimg.com/474x/f3/49/c1/f349c1d07db017c69c8e4114fb3edb83--soft-tacos-taco-bells.jpg'),
+(16, 384, 'tacos', 'Crunchy Taco Supreme', 3.59, 'A crunchy taco shell filled with seasoned beef, cool sour cream, crispy lettuce, shredded cheddar cheese and ripe tomatoes.', 0, 0, 'https://www.taco-bell.ro/wp-content/uploads/crunchy-taco-supreme.png'),
+(17, 326, 'tacos', 'Spicy Potato Soft Taco', 1.67, 'A flour tortilla filled with crispy potato bites, lettuce, real shredded cheddar cheese, and creamy chipotle sauce.', 0, 1, 'https://media1.popsugar-assets.com/files/thumbor/AqNvprp_qMat8zNYN6IL2MoVKsk/fit-in/728xorig/filters:format_auto-!!-:strip_icc-!!-/2014/08/28/746/n/1922195/71fe05dbeff638f5_Does-Spicy-Potato-Soft-Taco-Look-Awesome-Awful/i/Taco-Bell-Spicy-Potato-Taco.jpg'),
+(18, 326, 'tacos', 'Black Bean Quesarito', 5.63, 'Cheese quesadilla wrapped around a black bean, seasoned rice, reduced fat source cream & chipotle sauce burrito.', 0, 1, 'https://www.tacobell.com/images/26052_black_bean_quesarito_750x660.jpg'),
+(19, 500, 'tacos', 'Cheesy Gordita Crunch', 4.59, 'a', 0, 0, 'https://www.chewboom.com/wp-content/uploads/2021/10/Taco-Bell-Welcomes-Back-The-Doritos-Cheesy-Gordita-Crunch.jpg'),
+(20, 170, 'tacos', 'Doritos Locos Taco', 1.19, 'a', 0, 0, 'https://fastfoodgeek.com/wp-content/uploads/2012/02/Screen-Shot-2012-02-18-at-12.37.09-PM.png'),
+(21, 460, 'tacos', 'Power Menu Bowl', 4.99, 'a', 1, 1, 'https://www.tacobell.com/images/22490_power_menu_bowl_-_veggie_750x660.jpg');
 
 
 insert into menu (F_ID, RL_ID) Values
-(1,3), (1,4), (2,1), (2,2), (3,1), (3,2), (4,1), (4,2), (5,1), (5,2), (6,1), (6,2), (7,1), (7,2), (8,1), (8,2), (9,1), (9,2), (10,3), (10,4), (11,3), (11,4), (12,3), (12,4), (13,5), (13,6), (14,5), (14,6), (15,7), (15,8), (16,7), (16,8), (17,7), (17,8), (18,7), (18,8);
+(1,3), (1,4), (2,1), (2,2), (3,1), (3,2), (4,1), (4,2), (5,1), (5,2), (6,1), (6,2), (7,1), (7,2), (8,1), (8,2), (9,1), (9,2), (10,3), (10,4), (11,3), (11,4), (12,3), (12,4), (13,5), (13,6), (14,5), (14,6), (15,7), (15,8), (16,7), (16,8), (17,7), (17,8), (18,7), (18,8), (19,7), (19,8), (20,7), (20,8), (21,7), (21,8);
 
 
 
