@@ -8,9 +8,9 @@
       <div class="navbar">
         <h1 class ="logo">ChowNow</h1>
         <ul>
-          <li><button @click="FlipGluten" class="button-1">Gluten Free</button></li>
-          <li><button @click="FlipVegan" class="button-1">Vegan</button></li>
-          <li><a href="/" class="button-1" disabled="false">Look for Different Food</a></li>
+          <li><button @click="FlipGluten" class="button-1">GLUTEN FREE</button></li>
+          <li><button @click="FlipVegan" class="button-1">VEGAN</button></li>
+          <li><a href="/" class="button-1">Look for Different Food</a></li>
         </ul>
       </div>
       <div class="content">
@@ -109,8 +109,10 @@ export default {
           const price = this.tempMenuItems[i].F_Price;
           const glutenFree = this.tempMenuItems[i].Gluten_Free;
           const vegan = this.tempMenuItems[i].Vegan;
+          const image = this.tempMenuItems[i].Food_Img;
+
           
-          this.AddFoodItem(j, name, restaurant, type, calories, description, price, glutenFree, vegan);
+          this.AddFoodItem(j, name, restaurant, type, calories, description, price, glutenFree, vegan, image);
           console.log(this.menuItems[j]);
 
           j++;
@@ -149,7 +151,7 @@ export default {
     })
     },
     methods: {
-        FoodItem: function(name, restaurant, type, calories, description, price, glutenFree, vegan) {
+        FoodItem: function(name, restaurant, type, calories, description, price, glutenFree, vegan, image) {
             this.name = name;
             this.restaurant = restaurant;
             this.type = type;
@@ -159,6 +161,7 @@ export default {
             this.glutenFree = glutenFree;
             this.vegan = vegan;
             this.numLocations = 0;
+            this.Food_Img = image;
             this.locations = [
               {
                 lat: -1,
@@ -169,8 +172,8 @@ export default {
             ];
 
         },
-        AddFoodItem: function(index, name, restaurant, type, calories, description, price, glutenFree, vegan) { //Creates new location in array
-          this.menuItems[index] = new this.FoodItem(name, restaurant, type, calories, description, price, glutenFree, vegan);
+        AddFoodItem: function(index, name, restaurant, type, calories, description, price, glutenFree, vegan, image) { //Creates new location in array
+          this.menuItems[index] = new this.FoodItem(name, restaurant, type, calories, description, price, glutenFree, vegan, image);
           this.createdFoods.push(name);
           this.menuItems[index].locations.length = 0;
           console.log("Food Added at index " + index);
@@ -313,14 +316,15 @@ body {
 }
 .button-1:hover,
 .button-1:focus {
-  background-color: #FFFFFF;
+  background-color: #F082AC;
 }
 .banner{
-  width: 100%;
-  height: 100vh;
   background-image: url('assets/bg.jpg');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 140vh;
   
 }
 .logo{
@@ -372,7 +376,7 @@ body {
   transform: translateY(-50%);
   text-align: center;
   color: #000000;
-  margin-top: 80px;
+  margin-top: 30px;
 }
 .content h1{
   font-size: 70px;

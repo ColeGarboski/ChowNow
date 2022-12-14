@@ -1,13 +1,16 @@
 <template>
     <div class="menu-item">
-        <div class="card">
-          <div class="card-image"></div>
+        <div>
+          <div class="card-image" :style="cardImageBackground(foodItem.Food_Img)"></div>
+          <div class="cardtext">
         <h2>{{ foodItem.name }}</h2>
+       
         <p>{{ foodItem.restaurant }}</p>
         <p>Calories: {{ foodItem.calories }}</p>
         <p>Price: ${{ foodItem.price }}</p>
         <p>Locations: {{ foodItem.locations[0].city }}, {{ foodItem.locations[1].city }}</p>
         <p>Distance: {{ Math.round(foodItem.locations[0].distanceFromUser) }}mi, {{ Math.round(foodItem.locations[1].distanceFromUser) }}mi</p>
+      </div>
         <a href="#" class="button-1">Directions</a>
         </div>
 
@@ -24,16 +27,26 @@
         
       },
       methods: {
+          cardImageBackground(src) {
+
+            console.log(src);
+            
+            return {
+                backgroundImage: `url("${src}")`,
+            }
           
+        }
           //eyo
       },
       computed: {
-  
+      
       },
     props: {
       foodItem: Object,
 
-    }
+    },
+
+    
   }
   </script>
   
@@ -62,19 +75,20 @@
   border-radius: 15px;
   text-align: center;
   display: block;
+  transition: all 0.7s ease-in-out;
 }
 .card:hover{
   cursor: pointer;
   transform: scale(1.1);
-  transition: all 0.7s ease;
+  
 }
 
 .card-image {
   height: 170px;
   margin-bottom: 15px;
-  background-image: url("https://s3-media0.fl.yelpcdn.com/bphoto/xxXLAvkl6cBSnK4RFmB6Xw/348s.jpg");
   background-size: cover;
   border-radius: 15px 15px 0 0;
+  width: 270px
 }
 .button-1 {
   background-color: #EA4C89;
@@ -106,6 +120,10 @@
 .button-1:hover,
 .button-1:focus {
   background-color: #F082AC;
+}
+.cardtext{
+  overflow: auto;
+  height: 130px;
 }
   </style>
   

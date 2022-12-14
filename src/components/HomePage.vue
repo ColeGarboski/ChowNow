@@ -19,7 +19,6 @@
         <p>Click your desired food below:<br>We will find you all available options along with the distance to each!</p>
         <div>
           <router-link to="/chow/burger" tag="button">Burger</router-link>
-          <router-link to="/chow/pasta" tag="button">Pasta</router-link>
           <router-link to="/chow/chicken" tag="button">Chicken</router-link>
           <router-link to="/chow/tacos" tag="button">Tacos</router-link>
           <router-link to="/chow/sub" tag="button">Sub</router-link>
@@ -166,8 +165,9 @@ span{
   z-index: -1;
   transition: 0.5s;
 }
-button:hover span{
-  width: 100%;
+button:hover {
+ 
+  background-color: #f64c72;
 
 }
 button:hover{
